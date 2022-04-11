@@ -10,11 +10,21 @@ namespace App\Core;
  */
 class Response
 {
-    public function status(int $number)
+    /**
+     * Set response status code
+     *
+     * @param integer $number
+     */
+    public function setStatusCode(int $number)
     {
         http_response_code($number);
     }
 
+    /**
+     * Set response header location
+     * 
+     * @param string $url
+     */
     public function redirect($url)
     {
         header("Location: $url");

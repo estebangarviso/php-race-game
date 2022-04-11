@@ -14,6 +14,7 @@ class Router
     public Request $request;
     public Response $response;
 
+
     /**
      * Router constructor.
      *
@@ -56,15 +57,15 @@ class Router
         $callback = $this->routes[$method][$url] ?? false;
 
         if ($callback === false) {
-            echo 'Page not found';
-            exit;
+            $this->response->setStatusCode(404);
+            return $this->renderView('pagenotfound');
         }
 
         if (is_string($callback)) {
             return $this->renderView($callback);
         }
 
-        echo call_user_func($callback);
+        return call_user_func($callback);
     }
 
     /**
@@ -72,10 +73,10 @@ class Router
      * 
      * @param string $view
      */
-    public function renderView(string $view)
+    public function renderView(string $view, $params = [])
     {
         $layoutContent = $this->layoutContent();
-        $viewContent = $this->viewContent($view);
+        $viewContent = $this->renderOnlyView($view, $params);
 
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }
@@ -93,8 +94,12 @@ class Router
     /**
      * View content.
      */
-    protected function viewContent($view)
+    protected function renderOnlyView($view, $params)
     {
+        foreach ($params as $key => $value) {
+            $$key = $value;
+        }
+
         ob_start();
         include_once Application::$ROOT_DIR . "/views/$view.php";
         return ob_get_clean();

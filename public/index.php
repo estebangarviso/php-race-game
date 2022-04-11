@@ -1,14 +1,14 @@
 <?php
 
-use App\Core\Application;
 
-require Application::$ROOT_DIR . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
+
+use App\Controllers\SiteController;
+use App\Core\Application;
 
 $app = new Application(dirname(__DIR__));
 
-$app->router->get('/', function () {
-    return 'Hello World';
-});
-
+$app->router->get('/', 'home');
+$app->router->post('/race', [SiteController::class, 'handleRace']);
 
 $app->run();

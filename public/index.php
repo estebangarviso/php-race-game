@@ -1,10 +1,10 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
-
 use App\Core\Application;
 
-$app = new Application();
+require Application::$ROOT_DIR . '/vendor/autoload.php';
+
+$app = new Application(dirname(__DIR__));
 
 $app->router->get('/', function () {
     return 'Hello World';

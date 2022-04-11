@@ -30,9 +30,9 @@ class Router
      * Route a GET request to a callback.
      * 
      * @param string $path
-     * @param callable $callback
+     * @param $callback
      */
-    public function get(string $path, callable $callback)
+    public function get(string $path, $callback)
     {
         $this->routes['get'][$path] = $callback;
     }
@@ -60,6 +60,43 @@ class Router
             exit;
         }
 
+        if (is_string($callback)) {
+            return $this->renderView($callback);
+        }
+
         echo call_user_func($callback);
+    }
+
+    /**
+     * Render a view.
+     * 
+     * @param string $view
+     */
+    public function renderView(string $view)
+    {
+        $layoutContent = $this->layoutContent();
+        $viewContent = $this->viewContent($view);
+
+        return str_replace('{{content}}', $viewContent, $layoutContent);
+    }
+
+    /**
+     * Layout content.
+     */
+    protected function layoutContent()
+    {
+        ob_start();
+        include_once Application::$ROOT_DIR . '/views/layouts/layout.php';
+        return ob_get_clean();
+    }
+
+    /**
+     * View content.
+     */
+    protected function viewContent($view)
+    {
+        ob_start();
+        include_once Application::$ROOT_DIR . "/views/$view.php";
+        return ob_get_clean();
     }
 }

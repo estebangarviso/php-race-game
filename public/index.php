@@ -1,9 +1,10 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
-
 use App\Controllers\SiteController;
 use App\Core\Application;
+
+require __DIR__ . '/../vendor/autoload.php';
+
 
 $app = new Application(dirname(__DIR__));
 

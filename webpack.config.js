@@ -1,5 +1,10 @@
 var resolve = require('path').resolve;
 var webpack = require('webpack');
+var fs = require('fs');
+
+if (!fs.existsSync('./public/assets')) {
+  fs.mkdirSync('./public/assets');
+}
 
 const config = (env, argv) => {
   const isProduction = argv.mode === 'production';

@@ -1,14 +1,10 @@
 <?php
 
-use App\Controllers\SiteController;
-use App\Core\Application;
-
 require __DIR__ . '/../vendor/autoload.php';
 
+$app = new \App\Core\Application(dirname(__DIR__));
 
-$app = new Application(dirname(__DIR__));
-
-$app->router->get('/', [SiteController::class, 'home']);
-$app->router->post('/race', [SiteController::class, 'race']);
+$app->router->get('/', [\App\Controllers\SiteController::class, 'home']);
+$app->router->post('/race', [\App\Controllers\SiteController::class, 'race']);
 
 $app->run();

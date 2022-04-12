@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Controllers\SiteController;
+
 /**
  * Class Router
  * 
@@ -51,9 +53,8 @@ class Router
 
     public function resolve()
     {
-        $method = $this->request->getMethod();
+        $method = $this->request->method();
         $url = $this->request->getUrl();
-
         $callback = $this->routes[$method][$url] ?? false;
 
         if ($callback === false) {
@@ -65,7 +66,15 @@ class Router
             return $this->renderView($callback);
         }
 
-        return call_user_func($callback);
+        if (is_array($callback)) {
+            $callback[0] = new $callback[0]();
+            if (!method_exists($callback[0], $callback[1])) {
+                $this->response->setStatusCode(404);
+                return $this->renderView('pagenotfound');
+            }
+        }
+
+        return call_user_func($callback, $this->request);
     }
 
     /**

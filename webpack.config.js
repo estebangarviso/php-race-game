@@ -17,6 +17,10 @@ const config = (env, argv) => {
       assetModuleFilename: 'img/[hash][ext][query]',
       clean: true,
     },
+    watch: !isProduction,
+    watchOptions: {
+      ignored: /node_modules/,
+    },
     module: {
       rules: [
         {

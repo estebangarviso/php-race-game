@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Race;
+namespace App\Models\Race;
 
 class RoundResult
 {

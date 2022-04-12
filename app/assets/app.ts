@@ -1,5 +1,5 @@
 import 'bootstrap';
-import $, { ajax } from 'jquery';
+import $ from 'jquery';
 
 $(function () {
   $('#run-simulation').on('submit', function (e) {
@@ -7,14 +7,19 @@ $(function () {
     const form = $(this);
     const url = form.attr('action');
     const data = form.serialize();
-    ajax({
+    const submitBtn = form.find('button[type="submit"]');
+
+    submitBtn.prop('disabled', true);
+
+    $.ajax({
       url,
       data,
       method: 'POST',
       success: function (response) {
-        console.log(response);
-
-        $('#race-result').html(response);
+        const target = $('#race-result');
+        target.html(response);
+        target.addClass('show');
+        submitBtn.prop('disabled', false);
       },
     });
   });

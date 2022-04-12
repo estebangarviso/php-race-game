@@ -2,22 +2,28 @@
 
 namespace App\Controllers;
 
+use App\Core\Controller;
+use App\Core\Request;
+use App\Models\Race\Race;
+
 /**
  * Class SiteController
  * 
  * @author Esteban Garviso <e.garvisovenegas@gmail.com>
  * @package App\Controllers
  */
-class SiteController
+class SiteController extends Controller
 {
+
     public function home()
     {
-        // return Application::$app->router->renderView('home');
-        return 'test';
+        return $this->render('home');
     }
 
-    public function handleRace()
+    public function race(Request $request)
     {
-        return 'Post Race Result';
+        if ($request->isPost()) {
+            return (new Race())->start()->displayRaceResults();
+        }
     }
 }

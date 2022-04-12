@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Track;
+namespace App\Models\Track;
 
 class Track
 {
@@ -41,7 +41,5 @@ class Track
             $maxElementChunkIndex = $step * self::MIN_ELEMENT_LENGTH;
             $this->map[--$maxElementChunkIndex] = self::$types[array_rand(self::$types)];
         }
-
-        echo '<p><b>Track</b> is ready.</p>';
     }
 }

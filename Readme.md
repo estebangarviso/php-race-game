@@ -22,7 +22,7 @@ The game must simulate cars racing on a <mark>track made of curves and straights
 11. There are <mark>_5_ cars in total</mark>.
 12. <mark>The ultimate goal of this work is to provide a clean and solid solution for the task. You won&#39;t need to store data onto a Database. Frameworks are not allowed, only vanilla PHP 7.x</mark>. The attached folder includes a list of mandatory classes and functions that must be used as part of the solution, but you are free to create additional files to achieve the best result. Just note that the result must be of type RaceResult. This will be used as input of a test function which will validate your solution.
 
-## Installation 📦
+## Production Installation 📦
 
 _Build assets of the project_:
 
@@ -36,7 +36,27 @@ _Install composer dependencies:_
 composer install
 ```
 
-_Run server:_
+_Run server for production:_
+
+```sh
+php -S localhost:80 -t public/ -d display_errors=0
+```
+
+## Development Installation 📦
+
+_Build assets of the project_:
+
+```sh
+yarn build
+```
+
+_Install composer dependencies:_
+
+```sh
+composer install
+```
+
+_Run server for development:_
 
 ```sh
 php -S localhost:8000 -t public/

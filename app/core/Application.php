@@ -13,10 +13,14 @@ require __DIR__ . '/../config/defines.php';
 class Application
 {
     public static string $ROOT_DIR;
+    public static Application $app;
+
     public Router $router;
     public Request $request;
     public Response $response;
-    public static Application $app;
+    public ?Controller $controller = null;
+    public string $layout = 'layout';
+
 
     public function __construct($rootDir)
     {

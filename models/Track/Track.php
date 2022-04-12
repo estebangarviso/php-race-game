@@ -10,14 +10,19 @@ class Track
     /** @var int Constant minimum length of a series of elements */
     const MIN_ELEMENT_LENGTH = 40;
 
+    /** @var string Constant of the straight element type */
+    const STRAIGHT_ELEMENT_TYPE = 'STRAIGHT';
+
+    /** @var string Constant of the curve element type */
+    const CURVE_ELEMENT_TYPE = 'CURVE';
+
     /** @var array Array of types of elements */
-    private $types = [
-        'straight',
-        'curve',
+    private static array $types = [
+        self::STRAIGHT_ELEMENT_TYPE,
+        self::CURVE_ELEMENT_TYPE,
     ];
 
     private array $map = [];
-
 
     /**
      * Get the map.
@@ -28,7 +33,6 @@ class Track
     {
         return $this->map;
     }
-
 
     /**
      * Track constructor.

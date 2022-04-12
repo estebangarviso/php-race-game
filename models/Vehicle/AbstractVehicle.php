@@ -11,46 +11,22 @@ use ReflectionClass;
  */
 abstract class AbstractVehicle implements VehicleInterface
 {
-    /**
-     * Constant of the minimum vehicle speed.
-     *
-     * @var int
-     */
+    /** @var int Constant of the minimum vehicle speed. */
     const MIN_VEHICLE_SPEED = 4;
 
-    /**
-     * Constant of the maximum vehicle speed.
-     *
-     * @var int
-     */
+    /** @var int Constant of the maximum vehicle speed. */
     const MAX_VEHICLE_SPEED = 22;
 
-    /**
-     * The vehicle name.
-     *
-     * @var string
-     */
+    /** @var string The vehicle name. */
     protected string $name;
 
-    /**
-     * The vehicle speed on the straight element type.
-     *
-     * @var int
-     */
+    /** @var int The vehicle speed on the straight element type. */
     protected int $straightSpeed;
 
-    /**
-     * The vehicle speed on the curve element type.
-     *
-     * @var int
-     */
+    /** @var int The vehicle speed on the curve element type. */
     protected int $curveSpeed;
 
-    /**
-     * The vehicle position on the map.
-     *
-     * @var int
-     */
+    /** @var int The vehicle position on the map. */
     protected int $position = 0;
 
     /**

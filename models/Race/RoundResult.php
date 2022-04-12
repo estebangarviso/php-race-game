@@ -2,35 +2,57 @@
 
 namespace App\Models\Race;
 
+use App\Models\Vehicle\VehicleInterface;
+
+/**
+ * Class RoundResult
+ * @package App\Models\Race
+ */
 class RoundResult
 {
     /**
+     * The number of the round.
+     *
      * @var int
      */
-    public $step;
+    private int $round;
 
     /**
-     * @var array
+     * The array of the vehicles instances.
+     *
+     * @var VehicleInterface[]
      */
-    public $carsPosition;
-    public $rounds = [];
+    private array $vehiclePositions;
 
-    public function __construct(int $step, array $carsPosition)
+    /**
+     * RoundResult constructor.
+     *
+     * @param int $round
+     * @param array $vehiclePositions
+     */
+    public function __construct(int $round, array $vehiclePositions)
     {
-        $this->step = $step;
-        $this->carsPosition = $carsPosition;
+        $this->round = $round;
+        $this->vehiclePositions = $vehiclePositions;
     }
 
-    public function pushRound()
+    /**
+     * Get the round.
+     *
+     * @return int
+     */
+    public function getRound(): int
     {
-        $result = $this->carsPosition;
-        array_push($this->rounds, $result);
-        return $this->theResults();
+        return $this->round;
     }
 
-    public function theResults()
+    /**
+     * Get the vehicle positions.
+     *
+     * @return array
+     */
+    public function getVehiclePositions(): array
     {
-        // $result = new RaceResult();
-        RaceResult::endRace($this->rounds);
+        return $this->vehiclePositions;
     }
 }

@@ -24,7 +24,7 @@ use App\Core\Application;
         <?php include_once Application::$ROOT_DIR . "/views/partials/header.php"; ?>
     </header>
     <main>
-        <div class="container">
+        <div class="main-container">
             {{content}}
         </div>
     </main>

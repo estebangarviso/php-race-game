@@ -24,7 +24,7 @@ The game must simulate cars racing on a <mark>track made of curves and straights
 
 ## Production Installation 📦
 
-_Build assets of the project_:
+_Build assets of the project:_
 
 ```sh
 yarn build
@@ -44,7 +44,7 @@ php -S localhost:80 -t public/ -d display_errors=0
 
 ## Development Installation 📦
 
-_Build assets of the project_:
+_Build assets of the project:_
 
 ```sh
 yarn build

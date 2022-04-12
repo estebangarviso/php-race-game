@@ -65,7 +65,7 @@ class Race
      */
     public function start(): RaceResult
     {
-        echo '<p>️🚥 <b>Race</b> has begun.</p>';
+        echo '<p>️<i class="icon icon-traffic-lights"></i> <b>Race</b> has begun.</p>';
 
         // Set the primary data for the race.
         $round = 0;
@@ -148,7 +148,7 @@ class Race
      */
     private function getRaceResults(): RaceResult
     {
-        echo '<p>🏁 <b>Race</b> has been ended.</p>';
+        echo '<p><i class="icon icon-race-flags"></i> <b>Race</b> has been ended.</p>';
 
         $this->raceResult->setRoundResults($this->roundResults);
 

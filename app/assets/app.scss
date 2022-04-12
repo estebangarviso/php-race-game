@@ -8,3 +8,32 @@
   padding: 1rem 2rem;
   text-align: center;
 }
+
+// Icons
+.icon {
+  height: 32px;
+}
+
+.icon-race-car {
+  content: url('/img/race-car.svg');
+}
+
+.icon-race-flags {
+  content: url('/img/race-flags.svg');
+}
+
+.icon-notes {
+  content: url('/img/notes.svg');
+}
+
+.icon-round {
+  content: url('/img/round.svg');
+}
+
+.icon-traffic-lights {
+  content: url('/img/traffic-lights.svg');
+}
+
+.icon-cup {
+  content: url('/img/cup.svg');
+}

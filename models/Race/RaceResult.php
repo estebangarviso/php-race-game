@@ -49,7 +49,7 @@ class RaceResult
      */
     public function displayRaceResults(): void
     {
-        echo '<p>📋 <b>Race</b> details:</p>';
+        echo '<p><i class="icon icon-notes"></i> <b>Race</b> details:</p>';
 
         $this->displayWinners();
         $this->displayRoundResults();
@@ -66,12 +66,12 @@ class RaceResult
             $table .= '<tbody>';
 
             if (count($this->raceWinners) === 1) {
-                $table .= '<tr><td colspan="3"><b>🏆 Winner:</b></td></tr>';
+                $table .= '<tr><td colspan="3"><b><i class="icon icon-cup"></i> Winner:</b></td></tr>';
             } else {
                 $this->raceWinners = $this->raceWinners[0]->getSortedVehiclesByPosition($this->raceWinners);
 
-                $table .= '<tr><td colspan="3" style="text-align: center"><b>🤜🤛 THE DRAW</b></td></tr>';
-                $table .= '<tr><td colspan="3"><b>🏆 Winners:</b></td></tr>';
+                $table .= '<tr><td colspan="3" style="text-align: center"><b><i class="icon icon-draw"></i> THE DRAW</b></td></tr>';
+                $table .= '<tr><td colspan="3"><b><i class="icon icon-cup"></i> Winners:</b></td></tr>';
             }
 
             $table .= $this->buildVehiclesTablePart($this->raceWinners);
@@ -84,7 +84,7 @@ class RaceResult
             // //!TODO: Add the winner's details.
             // return View::renderViewOnly('partials/table', [
             //     'rows' => $this->raceWinners,
-            //     'columns' => ['🏆 Winner', '🤜🤛 THE DRAW'],
+            //     'columns' => ['<i class="icon icon-cup"></i> Winner', '🤜🤛 THE DRAW'],
             // ]);
         }
     }
@@ -116,7 +116,7 @@ class RaceResult
      */
     private function displayRoundResults(): void
     {
-        echo '<p>📋 <b>Rounds</b> details:</p>';
+        echo '<p><i class="icon icon-notes"></i> <b>Rounds</b> details:</p>';
 
         $table = '<table class="table">';
         $table .= '<thead></thead>';
@@ -124,7 +124,7 @@ class RaceResult
 
         /** @var RoundResult $round */
         foreach ($this->roundResults as $round) {
-            $table .= '<tr><td colspan="3"><b>🚩 Round ' . $round->getRound() . '</b></td></tr>';
+            $table .= '<tr><td colspan="3"><b><i class="icon icon-round"></i> Round ' . $round->getRound() . '</b></td></tr>';
 
             $table .= $this->buildVehiclesTablePart($round->getVehiclePositions());
 

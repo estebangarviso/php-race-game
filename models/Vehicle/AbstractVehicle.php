@@ -40,7 +40,7 @@ abstract class AbstractVehicle implements VehicleInterface
 
         $this->setSpeed();
 
-        echo '<p>🚙 <b>' . $this->getType() . '</b> was created with name - <b>' . $name . '</b></p>';
+        echo '<p><i class="icon icon-race-car"></i> <b>' . $this->getType() . '</b> was created with name - <b>' . $name . '</b></p>';
     }
 
     /**
